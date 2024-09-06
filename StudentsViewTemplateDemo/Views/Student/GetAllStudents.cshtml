@@ -1,0 +1,61 @@
+﻿@model IEnumerable<StudentsViewTemplateDemo.Models.Student>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetAllStudents</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "AddStudent", "Student")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Address.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Address.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Address.City)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address.Country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address.City)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "UpdateStudent", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "GetStudentById", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "DeleteStudent", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>
